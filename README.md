@@ -8,13 +8,9 @@ If this saves you tokens, consider giving it a ⭐ on GitHub — it helps others
 
 Reading PDFs with vision costs 100–500 tokens per page. Converting to text first lets any AI agent read only the sections it needs — saving **up to 90% of tokens**.
 
-## Install
+## Quick Start
 
-```bash
-pip install readpdf-cli
-```
-
-Requires `pdftotext`:
+**1. Install the dependency:**
 ```bash
 # macOS
 brew install poppler
@@ -22,6 +18,31 @@ brew install poppler
 # Linux
 apt install poppler-utils
 ```
+
+**2. Install readpdf:**
+```bash
+pip install readpdf-cli
+```
+
+**3. Add to your `AGENTS.md` or system prompt:**
+```
+When reading any .pdf file:
+1. Run `readpdf <file.pdf> -o <file.txt>` first to convert it to text.
+2. Then read the resulting .txt file using offset/limit to load only the sections you need.
+Never read PDF bytes directly — always convert to text first for token efficiency.
+```
+
+That's it. Your AI agent will now handle PDFs automatically:
+```
+User: "read paper.pdf and summarize section 3"
+
+Agent:
+  1. $ readpdf paper.pdf -o paper.txt   ← runs locally, 0 AI tokens
+  2. Read paper.txt offset=120 limit=80  ← reads only section 3 (~200 tokens)
+  3. Summarizes and responds
+```
+
+Works with any AI agent that has shell access: Claude, GPT-4, Gemini, Cursor, etc.
 
 ## Usage
 
@@ -39,12 +60,12 @@ readpdf paper.pdf -o paper.txt --pages 3-7
 readpdf paper.pdf
 ```
 
-Works with any AI agent that has shell access: Claude, GPT-4, Gemini, Cursor, etc.
+**2. Install readpdf:**
+```bash
+pip install readpdf-cli
+```
 
-## For AI agents — tell your agent to use this
-
-Add this to your `AGENTS.md` or system prompt so the AI automatically uses `readpdf` whenever it encounters a PDF:
-
+**3. Add to your `AGENTS.md` or system prompt:**
 ```
 When reading any .pdf file:
 1. Run `readpdf <file.pdf> -o <file.txt>` first to convert it to text.
@@ -52,7 +73,7 @@ When reading any .pdf file:
 Never read PDF bytes directly — always convert to text first for token efficiency.
 ```
 
-The agent will then handle PDFs like this automatically:
+That's it. Your AI agent will now handle PDFs automatically:
 ```
 User: "read paper.pdf and summarize section 3"
 
@@ -60,6 +81,24 @@ Agent:
   1. $ readpdf paper.pdf -o paper.txt   ← runs locally, 0 AI tokens
   2. Read paper.txt offset=120 limit=80  ← reads only section 3 (~200 tokens)
   3. Summarizes and responds
+```
+
+Works with any AI agent that has shell access: Claude, GPT-4, Gemini, Cursor, etc.
+
+## Usage
+
+```bash
+# Convert to file, then read selectively
+readpdf paper.pdf -o paper.txt
+
+# Extract a single page
+readpdf paper.pdf -o paper.txt -p 3
+
+# Extract a page range
+readpdf paper.pdf -o paper.txt --pages 3-7
+
+# Print to stdout
+readpdf paper.pdf
 ```
 
 ## How it works
