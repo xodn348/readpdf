@@ -4,8 +4,6 @@ Convert PDFs to text for token-efficient AI agent reading.
 
 If this saves you tokens, consider giving it a ⭐ on GitHub — it helps others find it.
 
-If this saves you tokens, consider giving it a ⭐ on GitHub — it helps others find it.
-
 ## Why
 
 Reading PDFs with vision costs 100–500 tokens per page. Converting to text first lets any AI agent read only the sections it needs — saving **up to 90% of tokens**.
