@@ -39,6 +39,27 @@ readpdf paper.pdf
 
 Works with any AI agent that has shell access: Claude, GPT-4, Gemini, Cursor, etc.
 
+## For AI agents — tell your agent to use this
+
+Add this to your `AGENTS.md` or system prompt so the AI automatically uses `readpdf` whenever it encounters a PDF:
+
+```
+When reading any .pdf file:
+1. Run `readpdf <file.pdf> -o <file.txt>` first to convert it to text.
+2. Then read the resulting .txt file using offset/limit to load only the sections you need.
+Never read PDF bytes directly — always convert to text first for token efficiency.
+```
+
+The agent will then handle PDFs like this automatically:
+```
+User: "read paper.pdf and summarize section 3"
+
+Agent:
+  1. $ readpdf paper.pdf -o paper.txt   ← runs locally, 0 AI tokens
+  2. Read paper.txt offset=120 limit=80  ← reads only section 3 (~200 tokens)
+  3. Summarizes and responds
+```
+
 ## How it works
 
 ```
