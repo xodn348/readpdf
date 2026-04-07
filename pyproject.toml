@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "readpdf"
+version = "0.1.0"
+description = "Convert PDF to text for token-efficient AI agent reading"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+readpdf = "readpdf:main"
+
+[project.urls]
+Homepage = "https://github.com/xodn348/readpdf"
