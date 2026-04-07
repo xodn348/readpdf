@@ -77,6 +77,8 @@ With readpdf:
 
 **Why not MCP?** MCP tool results return the full content back into the AI's context window — same cost as reading directly. A disk file lets the AI pull exactly the slice it needs, nothing more.
 
+**How the snippet becomes a skill.** The CLI (`readpdf`) is the tool; the 3-line snippet in Step 3 is the instruction that teaches your AI agent *when* and *how* to use it. Together, they give any agent automatic PDF-handling — no built-in support needed.
+
 ## License
 
 MIT
