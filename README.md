@@ -9,7 +9,7 @@ Reading PDFs with vision costs 100–500 tokens per page. Converting to text fir
 ## Install
 
 ```bash
-pip install readpdf
+pip install readpdf-cli
 ```
 
 Requires `pdftotext`:
